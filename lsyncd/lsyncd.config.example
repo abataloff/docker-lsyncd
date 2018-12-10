@@ -1,0 +1,21 @@
+settings{
+   logfile  	= "/lsyncd/lsyncd.log",
+   statusFile   = "/lsyncd/lsyncd.status",
+   nodaemon 	= true,
+   maxDelays	= 1,
+   maxProcesses = 1,
+   insist = false,
+}
+
+sync{
+    default.rsyncssh,
+    source      = "/data",
+    host        = "backup@example.net",
+    targetdir   = "/backups",
+    rsync={
+        _extra = { "-a" }
+    },
+    ssh = {
+      port = 22
+    }
+}

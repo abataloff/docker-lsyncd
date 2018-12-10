@@ -1,0 +1,10 @@
+version: '3'
+services:
+    lsyncd:
+        image: abataloff/lsyncd:latest
+        build: .
+        container_name: lsyncd
+        volumes:
+            - ./lsyncd:/lsyncd
+            - ./data:/data
+            - ./keys:/root/.ssh
