@@ -9,6 +9,7 @@ settings{
 
 sync{
     default.rsyncssh,
+    delete = false,
     source      = "/data",
     host        = "backup@example.net",
     targetdir   = "/backups",
