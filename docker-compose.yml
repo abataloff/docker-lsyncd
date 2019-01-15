@@ -3,6 +3,7 @@ services:
     lsyncd:
         image: abataloff/lsyncd:latest
         build: .
+        restart: always
         container_name: lsyncd
         volumes:
             - ./lsyncd:/lsyncd
