@@ -1,12 +1,18 @@
 # docker-lsyncd
-Утилита для односторонней синхронизации локальной папки с папкой на удаленной машине. При удалении файла или папки в локальной папке, в удаленой папке удаление не происходит.
-## Эксплуатация
-Для начал работы необходимо установить [docker-compose](https://docs.docker.com/compose/install/), сконфигурировать систему и запустить.
-### Конфигурирование
-1) Переименовать файл lsyncd/lsyncd.config.example в lsyncd.config
-2) Задать путь к локальной папке которую необходимо синхронизировать в параметре sync.source
-3) Задать хост удаленной машины в параметре sync.host
-4) Задать путь к папке на удаленной машине в параметре sync.targetdir
-5) Создать папку kyes c ssh ключем для авторизации на удаленной машине, он должен быть без пароля.
-### Запуск
-Выполнить последовательно команды _docker-compose build_ и _docker-compose up -d_
+A utility for one-way synchronization of a local folder with a folder on a remote machine. When you delete a file or folder in a local folder, the deletion does not occur in the deleted folder (as an option). Perfect for mirroring data.
+## Launching
+1) Cloning the repository
+```
+git clone https://github.com/abataloff/docker-lsyncd.git
+```
+2) Configuration
+    1) Rename the lsyncd/lsyncd.config.example file to lsyncd.config
+    2) Set the hostname of the remote host in the parameter _sync.host_ in lsyncd.config
+    3) Set the path to directory on remote host in the parameter _sync.targetdir_ in lsyncd.config
+    4) Set path to local directory as volume (./data:/data) in docker-compose file
+    5) Create the folder _kyes_ with ssh private key for autorization on remote host (he should be without a password and with permission 600)
+    6) Create the known_hosts file in _kyes_
+3) Run container
+```
+_docker-compose up -d_
+```
